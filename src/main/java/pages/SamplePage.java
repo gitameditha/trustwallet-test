@@ -10,6 +10,14 @@ public class SamplePage extends BasePage {
         click("ButtonCreateNewWallet"); // Use the locator key directly
     }
 
+    public void waitForPinButton() {
+        waitForVisibility("pinWalletInput"); // Use the locator key directly
+    }
+
+    // public void enterPin() {
+    //     click("pinWalletInput"); 
+    // }
+
     public void enterTextInSampleField(String text) {
         sendKeys("sampleTextField", text); // Use the locator key directly
     }
@@ -17,4 +25,11 @@ public class SamplePage extends BasePage {
     public String getSampleFieldText() {
         return getText("sampleTextField"); // Use the locator key directly
     }
+
+    public void clickPin(String pin) {
+        for (char digit : pin.toCharArray()) {
+            enterPin("pinWalletInput", String.valueOf(digit));
+        }
+    }
+    
 }

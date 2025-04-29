@@ -51,4 +51,10 @@ public class BasePage {
         By locator = By.xpath(locatorUtils.getLocator(locatorKey));
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator)).getText();
     }
+
+        public void enterPin(String locatorKey, String digit) {
+        // Implementation for entering a single PIN digit
+        String locator = locatorUtils.getLocator(locatorKey).replace("{pin}", digit);
+        DriverUtils.findElement(locator).click();
+    }
 }
