@@ -40,7 +40,6 @@ public class DriverUtils {
     }
 
     public static WebElement findElement(String locator) {
-        // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'findElement'");
     }
 }

@@ -14,6 +14,7 @@ import java.time.Duration;
 
 public class BasePage {
 
+    
     protected AppiumDriver driver;
     private WebDriverWait wait;
     private LocatorUtils locatorUtils;
@@ -25,14 +26,12 @@ public class BasePage {
         this.locatorUtils = new LocatorUtils(locatorFileName); // Initialize LocatorUtils with the file name
     }
 
-    // Click on an element using a locator key
     public void click(String locatorKey) {
         String locator = locatorUtils.getLocator(locatorKey);
         By byLocator = By.xpath(locator);
         wait.until(ExpectedConditions.elementToBeClickable(byLocator)).click();
     }
 
-    // Send keys to an element using a locator key
     public void sendKeys(String locatorKey, String text) {
         By locator = By.xpath(locatorUtils.getLocator(locatorKey));
         WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
@@ -40,9 +39,15 @@ public class BasePage {
         element.sendKeys(text);
     }
 
-    // Wait for an element to be visible using a locator key
     public WebElement waitForVisibility(String locatorKey) {
         By locator = By.xpath(locatorUtils.getLocator(locatorKey));
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    }
+
+    // Wait for visibility of a dynamic locator
+    public WebElement waitForVisibilitydynamicLocator(String locatorKey, String replacement) {
+        String dynamicLocator = locatorUtils.getDynamicLocator(locatorKey, replacement);
+        By locator = By.xpath(dynamicLocator);
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
@@ -51,10 +56,11 @@ public class BasePage {
         By locator = By.xpath(locatorUtils.getLocator(locatorKey));
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator)).getText();
     }
-
-        public void enterPin(String locatorKey, String digit) {
+    // enter text in a dynamic locator
+    public void inputTextDynamicLocator(String locatorKey, String digit) {
         // Implementation for entering a single PIN digit
-        String locator = locatorUtils.getLocator(locatorKey).replace("{pin}", digit);
-        DriverUtils.findElement(locator).click();
+        String pinLocator = locatorUtils.getDynamicLocator(locatorKey, digit);
+        WebElement pinElement = driver.findElement(By.xpath(pinLocator));
+        pinElement.click();
     }
 }

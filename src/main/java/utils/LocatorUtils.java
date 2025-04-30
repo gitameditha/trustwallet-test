@@ -20,6 +20,18 @@ public class LocatorUtils {
 
     // Method to get a locator by key
     public String getLocator(String key) {
-        return properties.getProperty(key);
+        String locator = properties.getProperty(key);
+        if (locator == null) {
+            throw new IllegalArgumentException("Locator not found for key: " + key);
+        }
+        return locator;
+    }
+
+    public String getDynamicLocator(String key, String replacement) {
+        String locator = getLocator(key);
+        if (locator == null) {
+            throw new IllegalArgumentException("Locator not found for key: " + key);
+        }
+        return locator.replace("{dynamicText}", replacement);
     }
 }

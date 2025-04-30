@@ -11,12 +11,8 @@ public class SamplePage extends BasePage {
     }
 
     public void waitForPinButton() {
-        waitForVisibility("pinWalletInput"); // Use the locator key directly
+        waitForVisibilitydynamicLocator("pinWalletInput", "1"); // Use the locator key directly
     }
-
-    // public void enterPin() {
-    //     click("pinWalletInput"); 
-    // }
 
     public void enterTextInSampleField(String text) {
         sendKeys("sampleTextField", text); // Use the locator key directly
@@ -26,9 +22,9 @@ public class SamplePage extends BasePage {
         return getText("sampleTextField"); // Use the locator key directly
     }
 
-    public void clickPin(String pin) {
+    public void inputPin(String pin) {
         for (char digit : pin.toCharArray()) {
-            enterPin("pinWalletInput", String.valueOf(digit));
+            inputTextDynamicLocator("pinWalletInput", String.valueOf(digit));
         }
     }
     

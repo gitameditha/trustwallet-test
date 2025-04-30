@@ -22,14 +22,8 @@ public class SampleTest extends BaseTest {
     public void sampleTest() {
         samplePage.clickSampleButton(); 
         samplePage.waitForPinButton();
-        samplePage.click("111111");
-
+        samplePage.inputPin("111111");
         samplePage.waitForPinButton();
-
-        samplePage.click("111111");
-
-        // samplePage.enterTextInSampleField("Test Input");
-        // String text = samplePage.getSampleFieldText();
-        // System.out.println("Retrieved text: " + text);
+        samplePage.inputPin("111111");
     }
 }
