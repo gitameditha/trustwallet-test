@@ -51,6 +51,27 @@
             <version>2.7</version>
         </dependency>
 
+        <!-- Cucumber Java -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>7.11.2</version>
+        </dependency>
+
+        <!-- Cucumber TestNG -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-testng</artifactId>
+            <version>7.11.2</version>
+        </dependency>
+
+        <!-- Cucumber Gherkin -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>gherkin</artifactId>
+            <version>26.0.0</version>
+        </dependency>
+
     </dependencies>
 
     <build>

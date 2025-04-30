@@ -149,6 +149,9 @@ mvn -Dtest=SampleTest test
 ```
 ## Key Files
 - homepages.locator.properties: Contains locators for UI elements.
+- sample.feature: Example feature file demonstrating BDD scenarios.
+- StepDefinitions.java: Maps Gherkin steps to Java methods.
+- TestRunner.java: Executes the feature files using Cucumber.
 - SampleTest.java: Example test case demonstrating dynamic PIN input.
 - DriverUtils.java: Utility class for driver initialization and element interactions.
 
@@ -156,4 +159,18 @@ mvn -Dtest=SampleTest test
 Java
 Appium
 TestNG
+Cucumber
 Maven
+
+## Example Feature File
+Here’s an example of a Gherkin feature file (sample.feature):
+
+```
+Feature: Sample Mobile Test
+
+  Scenario: Enter PIN to unlock wallet
+    Given the app is launched
+    When I click the "Create New Wallet" button
+    And I enter the PIN "111111"
+    Then I should see the wallet home screen
+```
